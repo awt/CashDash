@@ -1,0 +1,20 @@
+!!!
+%html
+  %head
+    %title CashDash - ZumoCast 
+    %link{:rel=>'stylesheet', :href=>'/stylesheets/style.css', :type => "text/css"}       
+    %script{:type => "text/javascript", :src => "/javascript/jquery-1.4.2.min.js"}
+    %script{:type => "text/javascript", :src => "/javascript/highcharts.js"}
+    %script{:type => "text/javascript", :src => "/javascript/dashboard_controller.js"}
+  %body{:onload => "dashboard_controller.init()", :id => "body"}
+    .container
+      .header
+        %div{:class => 'dashboard-title ' + ( !@config['use_logo'].nil? ? 'title-with-logo' : '' )}
+          = @config['app_name']
+          Dashboard 
+      - Chart.all(:order => :name).each_with_index do |chart, index|
+        - if index !=0
+          .seperator
+        .chart
+          %div{:id => chart.name}
+      

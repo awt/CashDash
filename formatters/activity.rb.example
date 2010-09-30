@@ -1,0 +1,28 @@
+class Activity
+  def self.generate_series
+    activity = MixpanelClient.instance.get_client.request(:events,
+                                                          :retention, {:event => '["ZumoCastClientActivity"]', :unit => 'day', :type => 'unique', :interval => 14})
+    #puts activity.to_yaml
+    series = []
+    dates = []
+    activity['data']['ZumoCastClientActivity']['descriptions'].each_key do |date|
+      dates.push(Date.parse(date))
+      #puts activity['data']['ZumoCastClientActivity']['values'][date].to_yaml
+    end
+    sorted_dates = dates.sort
+    sorted_dates.each do |date|
+      puts date
+      days_later = activity['data']['ZumoCastClientActivity']['values'][date.to_s]
+      data = [] 
+      activity['data']['ZumoCastClientActivity']['series'].reverse.each do |day|
+        data.unshift((days_later[day] * 100).to_i) if !days_later[day].nil?
+      end
+      series.unshift({ 'name' => 'Returning Active Users',
+               'pointStart' => (Time.parse(date.to_s).to_f * 1000).to_i,
+               'pointInterval' => 24 * 3600 * 1000,
+               'data' => data
+             })
+    end
+    return series
+  end
+end

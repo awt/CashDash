@@ -1,0 +1,54 @@
+mixpanel:
+  api_key: examplekey 
+  api_secret: examplesecret 
+
+app_name: ZumoCast
+#use_logo: true
+
+defaults: &chart_defaults
+  chart: 
+    defaultSeriesType: 'line'
+    backgroundColor: null
+    height: 125
+    width:  1000
+    marginTop: 0
+    marginBottom: 0
+    marginLeft: 400
+  legend: 
+    enabled: false 
+  credits:
+    enabled: false 
+  title: 
+    text: null 
+  xAxis: 
+    type: 'datetime'
+    labels:
+      enabled: false
+    tickColor: null
+    lineColor: null
+  yAxis: 
+    title:
+       text: null 
+    gridLineColor: null
+    labels: 
+      enabled: false
+
+title_defaults: &title_defaults
+  align: 'left'
+  y: 62
+  style:
+    color: black
+    fontSize: 30
+
+charts:
+  virality_coefficient:
+    <<: *chart_defaults
+    title: 
+      text: Virality Coefficient
+      <<: *title_defaults
+
+  activity:
+    <<: *chart_defaults
+    title: 
+      text: Activity
+      <<: *title_defaults

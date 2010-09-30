@@ -1,0 +1,29 @@
+class ViralityCoefficient
+  def self.generate_series
+    mixpanel_client = MixpanelClient.instance.get_client
+    installs = mixpanel_client.request(:events, :properties, {:event => 'install_client_from_referral', 
+                                                              :name => 'product',  
+                                                              :values => ['zumocast'].to_json, 
+                                                              :unit => 'day', 
+                                                              :type => 'unique', 
+                                                              :interval => 14})
+
+    referrals = mixpanel_client.request(:events, :properties, {:event => 'Referrals Sent', 
+                                                               :name => 'product',  
+                                                               :values => ['zumocast'].to_json, 
+                                                               :unit => 'day', 
+                                                               :type => 'unique', 
+                                                               :interval => 14})
+    series = { 'name' => 'Virality Coefficient',
+               'pointStart' => (Time.parse(installs['data']['series'][0]).to_f * 1000).to_i,
+               'pointInterval' => 24 * 3600 * 1000,
+             }
+
+    series['data'] = []
+    installs['data']['series'].each do |date|
+      series['data'].unshift(installs['data']['values']['zumocast'][date].to_f / referrals['data']['values']['zumocast'][date].to_f)
+    end
+    
+    return [series]
+  end
+end

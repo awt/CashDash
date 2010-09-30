@@ -1,0 +1,21 @@
+CashDash is sinatra app for compiling and serving up charts of metrics about your software.
+It uses the Highcharts js charting library to present series compiled by a background task.
+It's designed to run on Heroku, but can run on any *nix system.
+
+FEATURES
+* Generates and displays any number of charts on a single page
+* Password protected
+* Built-in support for importing Mixpanel data
+* Highly configurable
+
+SETUP
+
+1. Move config.yml.example to config.yml and edit.
+
+2. Rename the .example files in formatters and edit.
+
+3. Run compile_charts.rb to create and update the chart db.
+
+4. If you want to display a logo, copy a file named logo.png into public/images and set use_logo: true in config.yml
+
+5. Run start.sh to start up the webserver on port 4000.
