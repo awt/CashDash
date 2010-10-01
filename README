@@ -10,12 +10,16 @@ FEATURES
 
 SETUP
 
-1. Move config.yml.example to config.yml and edit.
+1. Install Bundler: gem install bundler
 
-2. Rename the .example files in formatters and edit.
+2. Install all required gems:  bundle install --path vendor/bundle
 
-3. Run compile_charts.rb to create and update the chart db.
+3. Move config.yml.example to config.yml and edit.
 
-4. If you want to display a logo, copy a file named logo.png into public/images and set use_logo: true in config.yml
+4. Rename the .example files in formatters and edit.
 
-5. Run start.sh to start up the webserver on port 4000.
+5. Run compile_charts.rb to create and update the chart db.
+
+6. If you want to display a logo, copy a file named logo.png into public/images and set use_logo: true in config.yml
+
+7. Run start.sh to start up the webserver on port 4000.

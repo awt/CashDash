@@ -1,14 +1,13 @@
 #!/usr/bin/env ruby1.9.1
 require 'rubygems'
+require 'bundler/setup'
+
 require 'sinatra'
 require 'haml'
 require 'sass'
-require 'sqlite3'
-require 'dm-core' 
 require 'json'
 require 'thin'
 require 'logger'
-require 'mixpanel'
 
 require File.join(File.dirname(__FILE__), 'lib', 'config')
 

@@ -1,0 +1,52 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    addressable (2.2.1)
+    daemons (1.1.0)
+    data_objects (0.10.2)
+      addressable (~> 2.1)
+    dm-core (1.0.2)
+      addressable (~> 2.2)
+      extlib (~> 0.9.15)
+    dm-do-adapter (1.0.2)
+      data_objects (~> 0.10.2)
+      dm-core (~> 1.0.2)
+    dm-migrations (1.0.2)
+      dm-core (~> 1.0.2)
+    dm-sqlite-adapter (1.0.2)
+      dm-do-adapter (~> 1.0.2)
+      do_sqlite3 (~> 0.10.2)
+    do_sqlite3 (0.10.2)
+      data_objects (= 0.10.2)
+    eventmachine (0.12.10)
+    extlib (0.9.15)
+    haml (3.0.21)
+    json (1.4.6)
+    mixpanel_client (0.4.1)
+    rack (1.2.1)
+    sass (3.1.0.alpha.12)
+    sinatra (1.0)
+      rack (>= 1.0)
+    sinatra-logger (0.1.1)
+      sinatra (>= 1.0)
+    sqlite3-ruby (1.2.5)
+    thin (1.2.7)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  dm-core
+  dm-migrations
+  dm-sqlite-adapter (~> 1.0.0)
+  haml
+  json
+  mixpanel_client
+  sass
+  sinatra
+  sinatra-logger
+  sqlite3-ruby (~> 1.2.5)
+  thin

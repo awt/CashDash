@@ -1,1 +1,1 @@
-thin -p 4000 -e development -R  config.ru start
+bundle exec thin -p 4000 -e development -R  config.ru start
