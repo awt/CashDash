@@ -23,3 +23,11 @@ SETUP
 6. If you want to display a logo, copy a file named logo.png into public/images and set use_logo: true in config.yml
 
 7. Run start.sh to start up the webserver on port 4000.
+
+COMMAND LINE:
+
+> ./compile_charts.rb --help
+Usage: compile_charts.rb [options]
+    -n, --no-data                    Skip data gathering
+    -c, --chart CHART
+
