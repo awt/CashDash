@@ -28,6 +28,9 @@ OptionParser.new do |opts|
     options[:chart] = c
   end
 
+  opts.on("-d", "--delete CHART") do |c|
+    options[:chart_to_delete] = c
+  end
 end.parse!
 
 formatters_path = File.join(File.dirname(__FILE__), 'formatters')
@@ -37,6 +40,17 @@ charts = options[:chart].nil? ? chart_config : {options[:chart] => chart_config[
 #Make sure we have a config for the chart
 if(options[:chart] && chart_config[options[:chart]].nil?)
   puts "Unkown chart: #{options[:chart]}"
+  exit(1)
+end
+
+if options[:chart_to_delete]
+  chart_to_delete = Chart.get(options[:chart_to_delete])
+  if(!chart_to_delete.nil?)
+   chart_to_delete.destroy
+  else
+    puts "#{options[:chart_to_delete]} can't be deleted because it doesn't exist."
+    exit(1)
+  end
   exit(0)
 end
 
