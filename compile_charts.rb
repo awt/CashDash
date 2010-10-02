@@ -24,7 +24,7 @@ OptionParser.new do |opts|
     options[:no_data] = true 
   end
 
-  opts.on("-c", "--chart [CHART]") do |c|
+  opts.on("-c", "--chart CHART") do |c|
     options[:chart] = c
   end
 
