@@ -24,11 +24,11 @@ OptionParser.new do |opts|
     options[:no_data] = true 
   end
 
-  opts.on("-c", "--chart CHART") do |c|
+  opts.on("-c", "--chart CHART", "Update only the specified chart") do |c|
     options[:chart] = c
   end
 
-  opts.on("-d", "--delete CHART") do |c|
+  opts.on("-d", "--delete CHART", "Delete the specified chart") do |c|
     options[:chart_to_delete] = c
   end
 end.parse!
