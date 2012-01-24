@@ -31,4 +31,5 @@ Usage: compile_charts.rb [options]
     -n, --no-data                    Skip data gathering
     -c, --chart CHART                Update only the specified chart
     -d, --delete CHART               Delete the specified chart
+***
 
